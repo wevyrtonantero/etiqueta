@@ -1,0 +1,74 @@
+nc (ca Categoria) CriarCategoria(w http.ResponseWriter, r *http.Request) {
+	var categoria Categoria
+
+	err := json.NewDecoder(r.Body).Decode(&categoria)
+	if err != nil {
+		panic(err)
+	}
+	stmt, err := ca.Db.Prepare("insert into categoria(id, categoria,) values(?,?)")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(
+		categoria.Id,
+		categoria.Categoria,
+	)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+	fmt.Fprintf(w, "Usuário Criado com sucesso")
+	w.WriteHeader(http.StatusOK)
+
+}
+
+
+
+
+
+
+**regra de negocio é o mais importante e deve estar bem definida
+
+
+
+** entidade é uma struct
+que tem metodos e atributos
+
+
+metodo
+
+
+
+
+
+	var categoria Categoria
+
+	err := json.NewDecoder(r.Body).Decode(&categoria)
+	if err != nil {
+		panic(err)
+	}
+	println(categoria.Categoria)
+
+	_, erro := db.Exec(fmt.Sprintf("insert into Categoria values(%d,%s)", categoria.Id, categoria.Categoria))
+
+	if erro != nil {
+		panic(erro)
+	}
+
+
+
+
+
+
+
+
+func NewCatrgoria(db *sql.DB) (*Categoria, error) {
+	return &Categoria{
+		Db:        db,
+		Id:        0,
+		Categoria: "",
+	}, nil
+
+}

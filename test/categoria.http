@@ -1,0 +1,36 @@
+POST  http://localhost:8080/categoria/criar
+Content-Type:  application/json
+
+{
+    "id": 24,
+    "categoria":"junao homesexual mais lindo"
+}
+
+###
+
+GET http://localhost:8080/categoria/
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/categoria/atualizar
+Content-Type:  application/json
+
+{
+    "id":24,
+    "categoria":"junao cabra macho"
+}
+
+###
+
+DELETE  http://localhost:8080/categoria/deletar/24
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/categoria/24
+Content-Type:  application/json
+
+
