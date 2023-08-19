@@ -1,7 +1,7 @@
 package entity
 
 
-type PrestadorDeServico struct {
+type Prestadordeservico struct {
 	Id       int
 	Nome     string
 	Telefone int
@@ -10,5 +10,4 @@ type PrestadorDeServico struct {
 	Cidade   string
 	Uf       string
 	Contato  string
-	Peca     []int 
 }

@@ -6,9 +6,11 @@ import (
 )
 
 type SubMontagem struct {
+	Id int
 	Cod       string
 	Descricao string
-	Peca      []Peca
+	Urlfoto string
+	Peca_id *Peca
 }
 
 

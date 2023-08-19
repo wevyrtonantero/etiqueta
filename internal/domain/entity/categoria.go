@@ -15,18 +15,20 @@ import (
 )
 
 type Categoria struct {
-	Id        int
-	Categoria string
-	Peca_id    []int
-	consumivel_id []int
-	Db        *sql.DB `json:"-"`
+	Id            int
+	Categoria     string
+	Peca_id       *Peca
+	Consumivel_id *Consumivel
+	Db            *sql.DB `json:"-"`
 }
 
-func NovaCategoria(db *sql.DB) (*Categoria, error) {
+func NovaCategoria (db *sql.DB) (*Categoria, error) {
 	return &Categoria{
-		Id:        0,
-		Categoria: "",
-		Db:        db,
+		Id:            0,
+		Categoria:     "",
+		Peca_id:       &Peca{},
+		Consumivel_id: &Consumivel{},
+		Db:            db,
 	}, nil
 }
 

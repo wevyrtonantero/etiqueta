@@ -33,10 +33,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	cl, err := entity.NovoConsumivel(db)
-	if err != nil {
-		panic(err)
-	}
+	//cl, err := entity.NovoConsumivel(db)
+	//if err != nil {
+	//	panic(err)
+	//}
 
 	r := chi.NewRouter()
 	r.Route("/categoria", func(r chi.Router) {
@@ -48,14 +48,14 @@ func main() {
 
 	})
 
-	r.Route("/consumivel", func(r chi.Router) {
-		r.Post("/criar", cl.CriarConsumivel)
-		r.Get("/", cl.ListarConsumivel)
-		r.Post("/atualizar", cl.AtualizarConsumivel)
-		r.Delete("/deletar{id}", cl.DeletarConsumivel)
-		r.Get("/{id}", cl.ListarConsumivelId)
+	//r.Route("/consumivel", func(r chi.Router) {
+	//	r.Post("/criar", cl.CriarConsumivel)
+	//	r.Get("/", cl.ListarConsumivel)
+	//	r.Post("/atualizar", cl.AtualizarConsumivel)
+	//	r.Delete("/deletar{id}", cl.DeletarConsumivel)
+	//	r.Get("/{id}", cl.ListarConsumivelId)
 
-	})
+	//})
 
 	r.Route("/fornecedor", func(r chi.Router) {
 		r.Put("/", entity.CriarFornecedor)

@@ -14,8 +14,7 @@ type Fornecedor struct {
 	Cidade   string
 	Uf       string
 	Contato  string
-	Peca     []int //Fornece quais peças 
-	Consumivel []int //Fornece quais consumiveis
+	
 }
 
 func (f *Fornecedor) IsValid() error {
