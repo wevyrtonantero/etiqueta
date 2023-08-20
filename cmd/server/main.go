@@ -10,7 +10,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 
 	"github.com/wevyrtonantero/estoque/internal/domain/entity"
-	
 )
 
 func main() {
@@ -33,29 +32,29 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	//cl, err := entity.NovoConsumivel(db)
-	//if err != nil {
-	//	panic(err)
-	//}
+	cto, err := entity.NovoCusto(db)
+	if err != nil {
+		panic(err)
+	}
 
 	r := chi.NewRouter()
 	r.Route("/categoria", func(r chi.Router) {
 		r.Post("/criar", c.CriarCategoria)
 		r.Get("/", c.ListarCategoria)
-		r.Post("/atualizar", c.AtualizarCategoria)
+		r.Post("/atualizar/{id}", c.AtualizarCategoria)
 		r.Delete("/deletar/{id}", c.DeletarCategoria)
 		r.Get("/{id}", c.ListarCategoriaId)
 
 	})
 
-	//r.Route("/consumivel", func(r chi.Router) {
-	//	r.Post("/criar", cl.CriarConsumivel)
-	//	r.Get("/", cl.ListarConsumivel)
-	//	r.Post("/atualizar", cl.AtualizarConsumivel)
-	//	r.Delete("/deletar{id}", cl.DeletarConsumivel)
-	//	r.Get("/{id}", cl.ListarConsumivelId)
+	r.Route("/custo", func(r chi.Router) {
+		r.Post("/criar", cto.CriarCusto)
+		r.Get("/", cto.ListarCusto)
+		r.Post("/atualizar/{id}", cto.AtualizarCusto)
+		r.Delete("/deletar/{id}", cto.DeletarCusto)
+		r.Get("/{id}", cto.ListarCustoID)
 
-	//})
+	})
 
 	r.Route("/fornecedor", func(r chi.Router) {
 		r.Put("/", entity.CriarFornecedor)

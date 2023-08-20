@@ -24,7 +24,7 @@ func NovaCategoria(db *sql.DB) (*Categoria, error) {
 		Db:        db,
 	}, nil
 }
-
+///////////////////////////////////////////////////////////////////////////
 func (c *Categoria) CriarCategoria(w http.ResponseWriter, r *http.Request) {
 	var categoria Categoria
 	err := json.NewDecoder(r.Body).Decode(&categoria)
@@ -49,10 +49,9 @@ func (c *Categoria) CriarCategoria(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////
 func (c *Categoria) ListarCategoria(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("listar categoria ok")
-
+	
 	query := "SELECT id, categoria FROM safisa.categoria"
 	rows, err := c.Db.Query(query)
 	if err != nil {
@@ -74,10 +73,18 @@ func (c *Categoria) ListarCategoria(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(categorias)
 }
+//////////////////////////////////////////////////////////////////////////////////////////
 
 func (c *Categoria) AtualizarCategoria(w http.ResponseWriter, r *http.Request) {
+	idStr := chi.URLParam(r, "id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		http.Error(w, "ID inválido", http.StatusBadRequest)
+		return
+	}
+
 	var categoria Categoria
-	err := json.NewDecoder(r.Body).Decode(&categoria)
+	err = json.NewDecoder(r.Body).Decode(&categoria)
 	if err != nil {
 		http.Error(w, "Erro ao ler o corpo da solicitação", http.StatusBadRequest)
 		return
@@ -86,9 +93,10 @@ func (c *Categoria) AtualizarCategoria(w http.ResponseWriter, r *http.Request) {
 
 	// Verifica se a categoria existe antes de atualizar
 	var categoriaBanco int
-	err = c.Db.QueryRow("SELECT COUNT(*) FROM safisa.categoria WHERE id = ?", categoria.Id).Scan(&categoriaBanco)
+	err = c.Db.QueryRow("SELECT COUNT(*) FROM safisa.categoria WHERE id = ?", id).Scan(&categoriaBanco)
 	if err != nil {
-		log.Fatal(err)
+		http.Error(w, "Erro ao verificar a existência da categoria", http.StatusInternalServerError)
+		return
 	}
 
 	if categoriaBanco == 0 {
@@ -96,15 +104,19 @@ func (c *Categoria) AtualizarCategoria(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Atualiza a categoriaDb
+	// Atualiza a categoria no banco de dados
 	query := "UPDATE safisa.categoria SET categoria = ? WHERE id = ?"
-	_, err = c.Db.Exec(query, categoria.Categoria, categoria.Id)
+	_, err = c.Db.Exec(query, categoria.Categoria, id)
 	if err != nil {
-		log.Fatal(err)
+		http.Error(w, "Erro ao atualizar categoria no banco de dados", http.StatusInternalServerError)
+		return
 	}
-	json.NewEncoder(w).Encode("Nome atualizada com sucesso!")
 
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintln(w, "Categoria atualizada com sucesso!")
 }
+//////////////////////////////////////////////////////////////////////////////////////////
+
 
 func (c *Categoria) DeletarCategoria(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
@@ -121,12 +133,11 @@ func (c *Categoria) DeletarCategoria(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println("Categoria deletada com sucesso!")
+	
 }
 
 func (c *Categoria) ListarCategoriaId(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("bateu na rota GET Listar por id a Categoria")
-
+	
 	id := chi.URLParam(r, "id")
 	idint, err := strconv.Atoi(id)
 	if err != nil {
@@ -162,3 +173,5 @@ func (c *Categoria) ListarCategoriaId(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(categoria)
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////

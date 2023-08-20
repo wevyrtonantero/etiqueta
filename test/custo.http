@@ -1,0 +1,49 @@
+POST http://localhost:8080/custo/criar
+Content-Type: application/json
+
+{
+    "Id": 8,
+    "Cod": "COD123",
+    "Descricao": "Descrição do Custo",
+    "Hmaquina": 10.5,
+    "Zincagem": 5.2,
+    "Retifica": 8.7,
+    "Tempera": 3.0,
+    "Dobra": 6.8
+}
+
+
+
+###
+
+GET http://localhost:8080/custo
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/custo/atualizar/1
+Content-Type:  application/json
+
+{
+    "Cod": "testando123",
+    "Descricao": "123698745testando tbmo",
+    "Hmaquina": 10.5,
+    "Zincagem": 5.2,
+    "Retifica": 8.7,
+    "Tempera": 3.0,
+    "Dobra": 6.8
+}
+
+###
+
+DELETE  http://localhost:8080/custo/deletar/98554
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/custo/2
+Content-Type:  application/json
+
+
