@@ -1,0 +1,44 @@
+POST http://localhost:8080/imposto/criar
+Content-Type: application/json
+
+{
+  "id": 8,
+  "uf": "sc",
+  "icms": 18.5,
+  "ipi": 5.0,
+  "difal": 2.5
+}
+
+
+
+###
+
+GET http://localhost:8080/imposto
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/imposto/atualizar/1
+Content-Type:  application/json
+
+{
+  
+  "uf": "RJ",
+  "icms": 5,
+  "ipi": 6.35,
+  "difal": 120.69
+}
+
+###
+
+DELETE  http://localhost:8080/imposto/deletar/2
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/imposto/1
+Content-Type:  application/json
+
+

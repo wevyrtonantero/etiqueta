@@ -36,6 +36,17 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	i, err := entity.NovoImposto(db)
+	if err != nil {
+		panic(err)
+
+	}
+
+	cml, err := entity.NovoConsumivel(db)
+	if err != nil {
+		panic(err)
+
+	}
 
 	r := chi.NewRouter()
 	r.Route("/categoria", func(r chi.Router) {
@@ -44,6 +55,15 @@ func main() {
 		r.Post("/atualizar/{id}", c.AtualizarCategoria)
 		r.Delete("/deletar/{id}", c.DeletarCategoria)
 		r.Get("/{id}", c.ListarCategoriaId)
+
+	})
+
+	r.Route("/consumivel", func(r chi.Router) {
+		r.Post("/criar", cml.CriarConsumivel)
+		r.Get("/", cml.ListarConsumivel)
+		r.Post("/atualizar/{id}", cml.AtualizarConsumivel)
+		r.Delete("/deletar/{id}", cml.DeletarConsumivel)
+		r.Get("/{id}", cml.ListarConsumivelId)
 
 	})
 
@@ -56,7 +76,16 @@ func main() {
 
 	})
 
-	r.Route("/fornecedor", func(r chi.Router) {
+	r.Route("/imposto", func(r chi.Router) {
+		r.Post("/criar", i.CriarImposto)
+		r.Get("/", i.ListarImposto)
+		r.Post("/atualizar/{id}", i.AtualizarImposto)
+		r.Delete("/deletar/{id}", i.DeletarImposto)
+		r.Get("/{id}", i.ListarImpostoID)
+
+	})
+
+	r.Route("/", func(r chi.Router) {
 		r.Put("/", entity.CriarFornecedor)
 		r.Get("/", entity.ListarFornecedor)
 		r.Put("/", entity.AtualizarFornecedor)

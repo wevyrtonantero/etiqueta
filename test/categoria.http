@@ -1,8 +1,8 @@
-POST http://localhost:8080/cat/criar
+POST http://localhost:8080/categoria/criar
 Content-Type: application/json
 
 {
-    "id": 8,
+    "id": 5,
     "categoria": "junao homesexual mais lindo"
     
 }

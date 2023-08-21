@@ -1,10 +1,44 @@
-POST  http://localhost:8080/consumivel/criar
+POST http://localhost:8080/consumivel/criar
+Content-Type: application/json
+
+{
+  "Id": 2,
+  "Cod": "Chkb123",
+  "Descricao": "Óleo dtyhrdtyo motor",
+  "Categoria_id": 3,
+  "Imposto_id": 3
+}
+
+
+###
+
+GET http://localhost:8080/consumivel
 Content-Type:  application/json
 
-{ 
-  "Id": 1,
-  "Cod": "011/15",
-  "Descricao": "fghdrgh",
-  "Fornecedor": [1],
-  "Categoria": [1]
+
+###
+
+POST   http://localhost:8080/consumivel/atualizar/
+Content-Type:  application/json
+
+{
+  
+  "Cod": "Chkb123",
+  "Descricao": "Óleo dtyhrdtyo motor",
+  "Categoria_id": 3,
+  "Imposto_id": 3
 }
+
+
+###
+
+DELETE  http://localhost:8080/consumivel/deletar/0
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/consumivel/6
+Content-Type:  application/json
+
+
