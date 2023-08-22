@@ -48,6 +48,18 @@ func main() {
 
 	}
 
+	f, err := entity.NovoFornecedor(db)
+	if err != nil {
+		panic(err)
+
+	}
+
+	mp, err := entity.NovaMateriaPrima(db)
+	if err != nil {
+		panic(err)
+
+	}
+
 	r := chi.NewRouter()
 	r.Route("/categoria", func(r chi.Router) {
 		r.Post("/criar", c.CriarCategoria)
@@ -85,21 +97,21 @@ func main() {
 
 	})
 
-	r.Route("/", func(r chi.Router) {
-		r.Put("/", entity.CriarFornecedor)
-		r.Get("/", entity.ListarFornecedor)
-		r.Put("/", entity.AtualizarFornecedor)
-		r.Delete("/", entity.DeletarFornecedor)
-		r.Get("/{id}", entity.ListarFornecedorId)
+	r.Route("/fornecedor", func(r chi.Router) {
+		r.Post("/criar", f.CriarFornecedor)
+		r.Get("/", f.ListarFornecedor)
+		r.Post("/atualizar/{id}", f.AtualizarFornecedor)
+		r.Delete("/deletar/{id}", f.DeletarFornecedor)
+		r.Get("/{id}", f.ListarFornecedorId)
 
 	})
 
 	r.Route("/materiaprima", func(r chi.Router) {
-		r.Put("/", entity.CriarMateriaPrima)
-		r.Get("/", entity.ListarMateriaPrima)
-		r.Put("/", entity.AtualizarMateriaPrima)
-		r.Delete("/", entity.DeletarMateriaPrima)
-		r.Get("/{id}", entity.ListarMateriaPrimaId)
+		r.Post("/criar", mp.CriarMateriaPrima)
+		r.Get("/", mp.ListarMateriaPrima)
+		r.Post("/atualizar/{id}", mp.AtualizarMateriaPrima)
+		r.Delete("/deletar/{id}", mp.DeletarMateriaPrima)
+		r.Get("/{id}", mp.ListarMateriaPrimaId)
 
 	})
 

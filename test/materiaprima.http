@@ -1,0 +1,48 @@
+POST http://localhost:8080/materiaprima/criar
+Content-Type: application/json
+
+{
+  "Id":4 ,
+  "Descrição": "Materia Prima Teste",
+  "Material": "Material Teste",
+  "Liga": "Liga Teste",
+  "Kgmt": 10.0,
+  "Valorkg": 5.0,
+  "Imposto_id": 4
+}
+
+
+
+###
+
+GET http://localhost:8080/materiaprima
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/materiaprima/atualizar/4
+Content-Type:  application/json
+
+{
+  
+  "Descrição": "Materia Prima Teste",
+  "Material": "Material Teste",
+  "Liga": "Liga Teste",
+  "Kgmt": 10.0,
+  "Valorkg": 5.0,
+  "Imposto_id": 1
+}
+
+###
+
+DELETE  http://localhost:8080/materiaprima/deletar/0
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/materiaprima/2
+Content-Type:  application/json
+
+

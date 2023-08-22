@@ -1,0 +1,54 @@
+POST http://localhost:8080/fornecedor/criar
+Content-Type: application/json
+
+
+{
+   "Id": 5,
+   "Nome": "Fornecedor Exemplo",
+   "Telefone": "123-456-7890",
+   "Rua": "Rua dos Fornecedores",
+   "Numero": "123",
+   "Cidade": "Cidade Fornecedora",
+   "Uf": "UF",
+   "Contato": "Nome do Contato"
+   
+}
+
+
+###
+GET  http://localhost:8080/fornecedor
+Content-Type: application/json
+
+
+
+###
+POST http://localhost:8080/fornecedor/atualizar/3
+Content-Type: application/json
+
+{
+   "Nome": "Fornecedor Exemplo",
+   "Telefone": "9999-123-456-7890",
+   "Rua": "Rua dos Fornecedores",
+   "Numero": "123",
+   "Cidade": "Cidade Fornecedora",
+   "Uf": "UF",
+   "Contato": "Nome do Contato"
+   
+}
+
+
+###
+DELETE http://localhost:8080/fornecedor/deletar/2
+Content-Type: application/json
+
+
+###
+GET  http://localhost:8080/fornecedor/2
+Content-Type: application/json
+
+
+
+
+
+
+
