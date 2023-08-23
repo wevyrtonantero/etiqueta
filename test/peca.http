@@ -1,0 +1,62 @@
+POST http://localhost:8080/peca/criar
+Content-Type: application/json
+
+{
+  "id": 50,
+  "codigo": "A-011/12",
+  "descricao": "Peça de teste",
+  "consumomes": 10,
+  "massa": 5.0,
+  "urlfoto": "https://exemplo.com/foto.jpg",
+  "urldesenho": "https://exemplo.com/desenho.pdf",
+  "urlsetupdemaquina": "https://exemplo.com/setup.pdf",
+  "descricaotecnica": "Essa é uma peça de teste",
+  "custopeca": 20.0,
+  "categoria_id": 10,
+  "imposto_id": 10,
+  "custo_id": 10,
+  "materiaprima_id": 10
+}
+
+
+###
+
+GET http://localhost:8080/peca/
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/peca/atualizar/50
+Content-Type:  application/json
+
+{
+  
+  "codigo": "A-011/zxczxcxzczxczxczxczxcxzc12",
+  "descricao": "Peça zxczxcxzczxczxczxcde teste",
+  "consumomes": 10,
+  "massa": 5.0,
+  "urlfoto": "https://exezxcczxzxmplo.com/foto.jpg",
+  "urldesenho": "https://exzxzxccempxzcxzcxzclo.com/desenho.pdf",
+  "urlsetupdemaquina": "https:/zxczxc/exzcxzczxcxemplo.com/setup.pdf",
+  "descricaotecnica": "Essa é umzxczxczxczxca peça de teste",
+  "custopeca": 20.0,
+  "categoria_id": 10,
+  "imposto_id": 10,
+  "custo_id": 10,
+  "materiaprima_id": 10
+}
+
+
+###
+
+DELETE  http://localhost:8080/peca/deletar/0
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/peca/10
+Content-Type:  application/json
+
+

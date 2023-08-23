@@ -2,7 +2,7 @@ POST http://localhost:8080/categoria/criar
 Content-Type: application/json
 
 {
-    "id": 5,
+    "id": 10,
     "categoria": "junao homesexual mais lindo"
     
 }

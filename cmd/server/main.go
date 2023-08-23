@@ -60,6 +60,12 @@ func main() {
 
 	}
 
+p, err := entity.NovaPeca(db)
+	if err != nil {
+		panic(err)
+
+	}
+
 	r := chi.NewRouter()
 	r.Route("/categoria", func(r chi.Router) {
 		r.Post("/criar", c.CriarCategoria)
@@ -116,27 +122,27 @@ func main() {
 	})
 
 	r.Route("/peca", func(r chi.Router) {
-		r.Put("/", entity.CriarPeca)
-		r.Get("/", entity.ListarPeca)
-		r.Put("/", entity.AtualizarPeca)
-		r.Delete("/", entity.DeletarPeca)
-		r.Get("/{id}", entity.ListarPecaId)
+		r.Post("/criar", p.CriarPeca)
+		r.Get("/", p.ListarPeca)
+		r.Post("/atualizar/{id}", p.AtualizarPeca)
+		r.Delete("/deletar/{id}", p.DeletarPeca)
+		r.Get("/{id}", p.ListarPecaId)
 
 	})
 
 	r.Route("/pedido", func(r chi.Router) {
-		r.Put("/", entity.CriarPedido)
+		r.Post("/", entity.CriarPedido)
 		r.Get("/", entity.ListarPedido)
-		r.Put("/", entity.AtualizarPedido)
+		r.Post("/", entity.AtualizarPedido)
 		r.Delete("/", entity.DeletarPedido)
 		r.Get("/{id}", entity.ListarPedidoId)
 
 	})
 
 	r.Route("/submontagem", func(r chi.Router) {
-		r.Put("/", entity.CriarSubMontagem)
+		r.Post("/", entity.CriarSubMontagem)
 		r.Get("/", entity.ListarSubMontagem)
-		r.Put("/", entity.AtualizarSubMontagem)
+		r.Post("/", entity.AtualizarSubMontagem)
 		r.Delete("/", entity.DeletarSubMontagem)
 		r.Get("/{id}", entity.ListarSubMontagemId)
 

@@ -2,7 +2,7 @@ POST http://localhost:8080/materiaprima/criar
 Content-Type: application/json
 
 {
-  "Id":4 ,
+  "Id": 10,
   "Descrição": "Materia Prima Teste",
   "Material": "Material Teste",
   "Liga": "Liga Teste",

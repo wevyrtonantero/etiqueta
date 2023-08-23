@@ -2,7 +2,7 @@ POST http://localhost:8080/custo/criar
 Content-Type: application/json
 
 {
-    "Id": 8,
+    "Id": 10,
     "Cod": "COD123",
     "Descricao": "Descrição do Custo",
     "Hmaquina": 10.5,
