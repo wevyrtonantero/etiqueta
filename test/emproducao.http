@@ -1,0 +1,41 @@
+POST http://localhost:8080/emproducao/criar
+Content-Type: application/json
+
+{
+  "Id":8,
+  "Tempomaquina": 10,
+  "cnc": "NomeDoCNC",
+  "operador": "NomeDoOperador",
+  "Peca_id": 10
+}
+
+###
+
+GET http://localhost:8080/emproducao
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/emproducao/atualizar/8
+Content-Type:  application/json
+
+{
+  "Tempomaquina": 170,
+  "cnc": "nardini",
+  "operador": "wevyrton",
+  "Peca_id": 1
+}
+
+###
+
+DELETE  http://localhost:8080/emproducao/deletar/2
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/emproducao/8
+Content-Type:  application/json
+
+

@@ -66,6 +66,12 @@ p, err := entity.NovaPeca(db)
 
 	}
 
+	ep, err := entity.NovoEmProducao(db)
+	if err != nil {
+		panic(err)
+
+	}
+
 	r := chi.NewRouter()
 	r.Route("/categoria", func(r chi.Router) {
 		r.Post("/criar", c.CriarCategoria)
@@ -91,6 +97,15 @@ p, err := entity.NovaPeca(db)
 		r.Post("/atualizar/{id}", cto.AtualizarCusto)
 		r.Delete("/deletar/{id}", cto.DeletarCusto)
 		r.Get("/{id}", cto.ListarCustoID)
+
+	})
+
+	r.Route("/emproducao", func(r chi.Router) {
+		r.Post("/criar", ep.CriarEmProducao)
+		r.Get("/", ep.ListarEmProducao)
+		r.Post("/atualizar/{id}", ep.AtualizarEmProducao)
+		r.Delete("/deletar/{id}", ep.DeletarEmProducao)
+		r.Get("/{id}", ep.ListarEmProducaoId)
 
 	})
 
