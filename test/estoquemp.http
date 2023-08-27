@@ -1,0 +1,35 @@
+POST http://localhost:8080/estoquedemateriaprima/criar
+Content-Type: application/json
+
+{
+    "Materiaprima_id":2
+}
+
+###
+
+GET http://localhost:8080/estoquedemateriaprima
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/estoquedemateriaprima/atualizar/10
+Content-Type:  application/json
+
+{
+  "Materiaprima_id":2
+}
+
+
+###
+
+DELETE  http://localhost:8080/estoquedemateriaprima/deletar/2
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/estoquedemateriaprima/2
+Content-Type:  application/json
+
+

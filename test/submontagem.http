@@ -1,0 +1,41 @@
+POST http://localhost:8080/submontagem/criar
+Content-Type: application/json
+
+{
+    "Id": 2,
+    "Cod": "abc123",
+    "Descricao": "Descrição da submontagem teste",
+    "Urlfoto": "https://exemplo.com/foto.jpg",
+    "Peca_id":2
+}
+###
+
+GET http://localhost:8080/submontagem
+Content-Type:  application/json
+
+
+###
+
+POST   http://localhost:8080/submontagem/atualizar/1
+Content-Type:  application/json
+
+{
+    
+    "Cod": "abc123",
+    "Descricao": "Descrição da submontagem teste",
+    "Urlfoto": "https://exemplo.com/fototeste tbm.jpg",
+    "Peca_id":5
+}
+
+###
+
+DELETE  http://localhost:8080/submontagem/deletar/
+Content-Type:  application/json
+
+
+###
+
+GET   http://localhost:8080/submontagem/2
+Content-Type:  application/json
+
+

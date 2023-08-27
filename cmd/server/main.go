@@ -60,13 +60,37 @@ func main() {
 
 	}
 
-p, err := entity.NovaPeca(db)
+	p, err := entity.NovaPeca(db)
 	if err != nil {
 		panic(err)
 
 	}
 
 	ep, err := entity.NovoEmProducao(db)
+	if err != nil {
+		panic(err)
+
+	}
+
+	e, err := entity.NovoEstoque(db)
+	if err != nil {
+		panic(err)
+
+	}
+
+	emp, err := entity.NovoEstoquemp(db)
+	if err != nil {
+		panic(err)
+
+	}
+
+	es, err := entity.NovoEstoqueservo(db)
+	if err != nil {
+		panic(err)
+
+	}
+
+	sub, err := entity.NovaSubMontagem(db)
 	if err != nil {
 		panic(err)
 
@@ -106,6 +130,33 @@ p, err := entity.NovaPeca(db)
 		r.Post("/atualizar/{id}", ep.AtualizarEmProducao)
 		r.Delete("/deletar/{id}", ep.DeletarEmProducao)
 		r.Get("/{id}", ep.ListarEmProducaoId)
+
+	})
+
+	r.Route("/estoque", func(r chi.Router) {
+		r.Post("/criar", e.CriarEstoque)
+		r.Get("/", e.ListarEstoque)
+		r.Post("/atualizar/{id}", e.AtualizarEstoque)
+		r.Delete("/deletar/{id}", e.DeletarEstoque)
+		r.Get("/{id}", e.ListarEstoqueId)
+
+	})
+
+	r.Route("/estoquedemateriaprima", func(r chi.Router) {
+		r.Post("/criar", emp.CriarEstoqueMp)
+		r.Get("/", emp.ListarEstoqueMp)
+		r.Post("/atualizar/{id}", emp.AtualizarEstoqueMp)
+		r.Delete("/deletar/{id}", emp.DeletarEstoqueMp)
+		r.Get("/{id}", emp.ListarEstoqueMpId)
+
+	})
+
+	r.Route("/estoquedeservo", func(r chi.Router) {
+		r.Post("/criar", es.CriarEstoqueMp)
+		r.Get("/", es.ListarEstoqueMp)
+		r.Post("/atualizar/{id}", es.AtualizarEstoqueMp)
+		r.Delete("/deletar/{id}", es.DeletarEstoqueMp)
+		r.Get("/{id}", es.ListarEstoqueMpId)
 
 	})
 
@@ -155,11 +206,11 @@ p, err := entity.NovaPeca(db)
 	})
 
 	r.Route("/submontagem", func(r chi.Router) {
-		r.Post("/", entity.CriarSubMontagem)
-		r.Get("/", entity.ListarSubMontagem)
-		r.Post("/", entity.AtualizarSubMontagem)
-		r.Delete("/", entity.DeletarSubMontagem)
-		r.Get("/{id}", entity.ListarSubMontagemId)
+		r.Post("/criar", sub.CriarSubMontagem)
+		r.Get("/", sub.ListarSubMontagem)
+		r.Post("/atualizar/{id}", sub.AtualizarSubMontagem)
+		r.Delete("/deletar/{id}", sub.DeletarSubMontagem)
+		r.Get("/{id}", sub.ListarSubMontagemId)
 
 	})
 
